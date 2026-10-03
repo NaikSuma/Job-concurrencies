@@ -1,0 +1,26 @@
+name: Test Concurrency
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Start Job
+        run: echo "Job started"
+
+      - name: Wait
+        run: sleep 60
+
+      - name: Deploy app
+        run: echo "Deploying"
