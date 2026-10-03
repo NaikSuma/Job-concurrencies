@@ -1,7 +1,7 @@
 name: Test Concurrency
 
 on:
-  push:
+  push: 
     branches: [ main ]
  
 jobs:
